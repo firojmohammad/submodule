@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:202058804932:certificate/9166a428-fca2-4055-9920-7c7da085f2f8
+    alb.ingress.kubernetes.io/group.name: node-red
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}, {"HTTP": 80}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: instance
+    kubernetes.io/ingress.class: alb
+  name: mtrader-ingress
+  namespace: default
+spec:
+  rules:
+  - host: mtrader.test.ptsdevstaging.com
+    http:
+      paths:
+      - backend:
+          serviceName: mtrader-test
+          servicePort: 1234
+        path: /*
+        pathType: Prefix
+

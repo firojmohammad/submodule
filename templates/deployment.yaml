@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "machine-trader.fullname" . }}
+  labels:
+    app: {{ .Values.selector.app }}      
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.selector.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.selector.app }}
+    spec:
+            #imagePullSecrets:
+            #serviceAccountName: 
+      containers:
+        - name: machine-trader
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 1234
+              protocol: TCP
