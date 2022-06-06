@@ -1,0 +1,9 @@
+[submodule "pts-node-red-alpaca"]
+	path = pts-node-red-alpaca
+	url = https://github.com/predictivetechnologysystems/pts-node-red-alpaca.git
+[submodule "pts-node-red-polygon"]
+	path = pts-node-red-polygon
+	url = https://github.com/predictivetechnologysystems/pts-node-red-polygon.git
+[submodule "Apche2-"]
+	path = Apche2-
+	url = git@github.com:firojmohammad/Apche2-.git
